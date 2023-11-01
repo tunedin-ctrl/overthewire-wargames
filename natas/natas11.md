@@ -11,11 +11,14 @@ Conversely, the SaveData function essentially performs the reverse:
 `setcookie("data", base64_encode(xor_encrypt(json_encode($d))));
 `
 To break the code, we aim to determine the XOR key that, when used, sets the "showpassword" value to "yes" in the cookie. The XOR encryption's beauty is its symmetry: the same operation can both encrypt and decrypt. By knowing the plaintext and the cipher, we can derive the key:
-`plaintext XOR cipher = key
-`
+
+`plaintext XOR cipher = key`
+
 To get our hands on the plaintext, we consider:
+
 `$defaultdata = array("showpassword"=>"no", "bgcolor"=>"#ffffff");
 `
+
 And the cipher is the value stored in the Application->Cookie.
 <img title="inspect html" alt="Alt text" src="image_resources/natas11_cookie.png">
 
@@ -25,9 +28,11 @@ Applying the XOR operation between the known plaintext (after json encoding) and
 
 Once we've determined the key, we can use the SaveData function's logic to craft our malicious cookie with "showpassword" set to "yes":
 
-`$data = array("showpassword" => "yes", "bgcolor" => "#ffffff");
+```
+$data = array("showpassword" => "yes", "bgcolor" => "#ffffff");
 $key = "KNHL";  // the derived key from the XOR operation
-$spoofed_cookie = encrypt($data, $key);`
+$spoofed_cookie = encrypt($data, $key);
+```
 
 This crafted cookie value, when set in the application, should 
 expose the password.
