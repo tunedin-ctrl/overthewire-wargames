@@ -10,6 +10,7 @@ After this we can use `; ls ../../../../etc/natas_webpass` to confirm the route 
 
 <img title="inspect html" alt="Alt text" src="image_resources/natas9_form2.png">
 
+<img title="inspect html" alt="Alt text" src="image_resources/natas9_pass.png">
+
 ";" is used to end the egrep query for you to do command injection on the form.
 
-<img title="inspect html" alt="Alt text" src="image_resources/natas9_pass.png">
