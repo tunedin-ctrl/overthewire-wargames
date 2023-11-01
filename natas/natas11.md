@@ -46,4 +46,4 @@ expose the password.
 
 <img title="inspect html" alt="Alt text" src="image_resources/natas11_pass.png">
 
-In reflection, this challenge is a real brain-teaser. XOR encryption, while straightforward conceptually, can be tricky to handle in practical scenarios. Decrypting without directly knowing the key demands not just persistence but also a bit of luck.
+In reflection, this challenge is a real brain-teaser. XOR encryption, while straightforward conceptually, can be tricky to handle in real-life cases where we do not know how things are encrupted. Also, decrypting without directly knowing the key demands not just persistence but also a bit of luck.
