@@ -3,21 +3,28 @@ For this level, the source code delves deep into XOR encryption. The xor_encrypt
 <img title="inspect html" alt="Alt text" src="image_resources/natas11_code.png">
 
 Once encrypted, the data is stored in the cookie using a combination of base64 encoding and the aforementioned XOR encryption.s
-`$tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE["data"])), true);
-`
+```
+$tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE["data"])), true);
+```
 Here, the cookie data undergoes a base64 decode, followed by an XOR decryption, and is then finally transformed into a PHP associative array.
 
 Conversely, the SaveData function essentially performs the reverse:
-`setcookie("data", base64_encode(xor_encrypt(json_encode($d))));
-`
+
+```
+setcookie("data", base64_encode(xor_encrypt(json_encode($d))));
+```
+
 To break the code, we aim to determine the XOR key that, when used, sets the "showpassword" value to "yes" in the cookie. The XOR encryption's beauty is its symmetry: the same operation can both encrypt and decrypt. By knowing the plaintext and the cipher, we can derive the key:
 
-`plaintext XOR cipher = key`
+```
+plaintext XOR cipher = key
+```
 
 To get our hands on the plaintext, we consider:
 
-`$defaultdata = array("showpassword"=>"no", "bgcolor"=>"#ffffff");
-`
+```
+$defaultdata = array("showpassword"=>"no", "bgcolor"=>"#ffffff");
+```
 
 And the cipher is the value stored in the Application->Cookie.
 <img title="inspect html" alt="Alt text" src="image_resources/natas11_cookie.png">
