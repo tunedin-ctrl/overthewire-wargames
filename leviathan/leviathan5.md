@@ -44,7 +44,7 @@ Cannot find /tmp/file.log
 Pretty much what we had observed using `objdump`. 
 Now, we have confirmed our suspicions and could try copying the password file into the tmp file and use that as a lever to get the password. 
 
-However, copying the password file directly results in a permission denied error. To deal with this, we can create a symbolic link pointing to the password file from our temporary file:
+However, copying the password file directly results in a permission denied error. To deal with this, we can create a symbolic link which I often use in wsl to get native directories into the distro. Similarly, we can do this for the task by creating a link from the password file to our temporary folder:
 ```
 leviathan5@gibson:~$ cp  /etc/leviathan_pass/leviathan6 /tmp/file.log
 cp: cannot open '/etc/leviathan_pass/leviathan6' for reading: Permission denied
