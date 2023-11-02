@@ -18,4 +18,5 @@ Now we know about referers and can solve the problem. For me, I solved it using 
 <img title="inspect html" alt="Alt text" src="image_resources/natas4_pass.png">
 
 ### Reflection:
-For this level, I did not know the term "referers". The way how I came to find it was through the hint:
+For this level, I did not know the term "referers". The initial way I attempted to solve this challenge was through using proxy servers to fake a link through headers and appear to come from natas5. However, later on I realised that we could just try intercept the http request data and there referers came to the scene. Pretty much all these exercises help me broaden my eyesight of ways to solve the same question that can be applied not just in security.
+
