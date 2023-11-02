@@ -1,4 +1,4 @@
-After using `ls -la`, it looks like `level3` is the file we need to explot. First, the executable is like level1 with the password. So, we need to check what the file does and using objdump, I get:
+After using `ls -la`, it looks like `level3` is the file we need to explot. First, the executable is like leviathan1 with the prompted password. We need to check what the file does and using objdump, I get:
 
 ```
 leviathan3@gibson:~$ objdump -T level3 
@@ -58,9 +58,9 @@ $
 +++ exited (status 0) +++
 ```
 
-From the output, we identify a password (snlprintf). However, even with the shell access, we're unable to read the password for leviathan4 due to permissions.
+Based on the output, we identified a password (snlprintf). However, even with shell access, we're unable to read the password for leviathan4 due to permissions.
 
-This means the geteuid step is not elevating our privileges to the owner group but is rather sticking with the leviathan3 user.
+This means the geteuid step is not elevating our privileges to the owner group but rather sticking with the leviathan3 user.
 
 Recalling the method from the previous level, let's attempt to use a temporary directory to bypass the permissions check.
 
