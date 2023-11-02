@@ -5,7 +5,7 @@ leviathan5@gibson:~$ ./leviathan5
 Cannot find /tmp/file.log
 ```
 
-Since we do not know what the executable is doing, we can use objdump to have some idea on what its doing on the stack:
+Since we do not know what the executable is doing, we can use objdump to get some idea on what its doing on the stack:
 ```
 leviathan5@gibson:~$ objdump -T leviathan5 
 
@@ -31,7 +31,7 @@ Key findings from the output:
     - The program opens a file (`fopen`), reads from it (`fgetc`), outputs its content (`putchar`), and then deletes it (`unlink`).
     - It also retrieves the user's UID (`getuid`) and sets the UID (`setuid`).
 
-Now, we have some basic idea on what the command is doing so we create a dummy folder we try the command again:
+Now, we have some basic idea on what the command is doing, so we create a dummy folderand try the command again:
 
 ```
 leviathan5@gibson:~$ echo nihao > /tmp/file.log
@@ -41,10 +41,10 @@ leviathan5@gibson:~$ ./leviathan5
 Cannot find /tmp/file.log
 ```
 
-Pretty much what we had expected. So, we could try copying the password file into the tmp file and get the password there. 
+Pretty much what we had observed using `objdump`. 
+Now, we have confirmed our suspicions and could try copying the password file into the tmp file and use that as a lever to get the password. 
 
-Since copying the password file directly results in a permission denied error, we can attempt to create a symbolic link pointing to the password file:
-
+However, copying the password file directly results in a permission denied error. To deal with this, we can create a symbolic link pointing to the password file from our temporary file:
 ```
 leviathan5@gibson:~$ cp  /etc/leviathan_pass/leviathan6 /tmp/file.log
 cp: cannot open '/etc/leviathan_pass/leviathan6' for reading: Permission denied
