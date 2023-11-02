@@ -1,2 +1,3 @@
 This level was quite simple.
-I used `cat data.txt | egrep millionth` which got me the password
+I used a variation of `cat` to solve it:
+`cat data.txt | egrep millionth` 
