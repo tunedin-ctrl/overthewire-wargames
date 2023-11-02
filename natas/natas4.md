@@ -16,3 +16,6 @@ Now we know about referers and can solve the problem. For me, I solved it using 
 <img title="inspect html" alt="Alt text" src="image_resources/natas4_refer.png">
 
 <img title="inspect html" alt="Alt text" src="image_resources/natas4_pass.png">
+
+### Reflection:
+For this level, I did not know the term "referers". The way how I came to find it was through the hint:
