@@ -1,4 +1,4 @@
-Using `ls -la`, I found a `.trash` folder with an executable `bin` inside like so:
+Using `ls -la`, I found a `.trash` folder with an executable `bin` inside
 
 ```
 leviathan4@gibson:~/.trash$ ls -la
