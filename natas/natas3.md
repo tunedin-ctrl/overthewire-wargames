@@ -1,5 +1,5 @@
-
 In this level, a foundational understanding of web architectures and front-end development is essential. 
+
 We start by delving into the HTML:
 <img title="inspect html" alt="Alt text" src="image_resources/natas3.png">
 
