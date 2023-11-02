@@ -15,3 +15,5 @@ Then following on from the last level where we edited the file extension in the 
 
 ### Reflection:
 This was quite an interesting challenge that I hadn't expected cross-site scripting to be this easy. Initially, I had thought that you needed to make intricate shellcodes and hide them sneakily into files for the attack to work. However, the attack is so simple to the point that it only requires us to just add image header bytes as a facade to upload our malicious script.  
+Therefore, this prompted me to read through the OWASP guidelines on how to avoid cross-site scripting shown here:
+https://owasp.org/www-community/attacks/xss/
