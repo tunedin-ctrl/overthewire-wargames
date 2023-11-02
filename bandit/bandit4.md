@@ -1,0 +1,1 @@
+use find ./* to search what the file enconding is
