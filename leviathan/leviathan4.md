@@ -46,7 +46,7 @@ __libc_start_main(0x80491a6, 1, 0xffffd684, 0 <unfinished ...>
 fopen("/etc/leviathan_pass/leviathan5", "r")                                                                                        = 0
 +++ exited (status 255) +++
 ```
-It's evident from the ltrace output that the executable is reading from the `/etc/leviathan_pass/leviathan5` file.
+It's evident from the `ltrace` output that the executable is reading from the `/etc/leviathan_pass/leviathan5` file.
 
 The output from the executable is a binary representation. We need to convert this into ASCII to retrieve the password. A quick Python one-liner will get the job done.
 
@@ -54,3 +54,6 @@ The output from the executable is a binary representation. We need to convert th
 leviathan4@gibson:~/.trash$ ./bin | python3 -c "import sys; print(''.join([chr(int(b, 2)) for b in sys.stdin.read().split()]))"
 EKKlTF1Xqs
 ```
+
+### Reflection:
+Overall, this task was quite simple as it required us to combine what we have learnt from the previous levels but with a twist which was challenging to find. This was because the binary of the password was not exactly obvious unless you could understand what the used command outputs mean. 
