@@ -2,11 +2,11 @@ For this level, the provided source code is using a grep command to search throu
 
 <img title="inspect html" alt="Alt text" src="image_resources/natas9_code.png">
 
-So,  we can instead try to inject shell commands into the form. To do this, we can first use: `test; find / -name *natas*;` to find where the password is located.
+So, we can instead try and inject shell commands into the form. To do this, we can first use: `test; find / -name *natas*;` to find where the password is located.
 
 <img title="inspect html" alt="Alt text" src="image_resources/natas9_form1.png">
 
-After this we can use `; ls ../../../../etc/natas_webpass` to confirm the route and cat to get the password.
+After this, we can use `; ls ../../../../etc/natas_webpass` to confirm the route and cat to get the password.
 
 <img title="inspect html" alt="Alt text" src="image_resources/natas9_form2.png">
 
