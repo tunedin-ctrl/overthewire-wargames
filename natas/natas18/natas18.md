@@ -1,0 +1,1 @@
+<img title="inspect html" alt="Alt text" src="../image_resources/natas18_code.png">

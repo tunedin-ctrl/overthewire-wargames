@@ -12,6 +12,7 @@ The `#test` ensures that the query after our code is commented out and not execu
 <img title="inspect html" alt="Alt text" src="image_resources/natas15_pass.png">
 
 
+### Protecting against sql injections
 Since it is so easy to inject SQL statements inside queries, how do you actually protect your websites against them? 
 Following the [OWASP cheat sheet series](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html), we should:
 Firstly, only be using prepared statements instead of directly user input into the SQL with the usage of parametrized queries. 
@@ -21,7 +22,7 @@ Original statement:
 $query = "SELECT * from users where username=\"".$_REQUEST["username"]."\" and password=\"".$_REQUEST["password"]."\"";
 ```
 
-changed to:
+Changed to:
 ```
 $our_stmt = mysqli_prepare($link, "SELECT * from users where username=? and password=?");
 
