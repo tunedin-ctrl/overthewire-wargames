@@ -1,7 +1,7 @@
-This level is a variation of the previous, but with a subtle twist. 
-While the code is not provided, some immediate observations can be made:
-    - The session IDs aren't sequential this time
-    - The session IDs are encoded (most likely in hex)
+This level presents a subtle variation from the previous challenge. Without access to the exact source code, some observations become immediately apparent:
+
+    - The session IDs aren't sequential this time.
+    - The session IDs seem to be encoded, likely in hex.
 
 When you enter empty fields for both username and password, you'll receive a message:
 <img title="inspect html" alt="Alt text" src="../image_resources/natas19_user.png">
