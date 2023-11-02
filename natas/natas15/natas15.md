@@ -4,7 +4,6 @@ This level is much more complicated than the last challenge where you just need 
 ```
 didn't yield any results and instead flagged an error.
 
-<img title="inspect html" alt="Alt text" src="../image_resources/natas15_code.png">
 
 From the source code, we can see that the application is checking for the existence of a user based on the inputted username. When a username is provided via the $_REQUEST array, there is a SQL query to check if the given username exists in the database. If a record is found, it simply returns that the user exists. 
 We also can see that there is no easy way to immediately guess the password so, we need to change our strategy.
