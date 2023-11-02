@@ -39,15 +39,14 @@ DYNAMIC SYMBOL TABLE:
 0804a004 g    DO .rodata        00000004  Base        _IO_stdin_used
 ```
 
-From the table, I didn't infer much so I then tried getting the password directly since the owner is leviathan3 but failed:
+Though this didn't reveal much, I tried reading the password for leviathan3 directly, which unsurprisingly failed:
 
 ```
 leviathan2@gibson:~$ ./printfile /etc/leviathan_pass/leviathan3
 You cant have that file...
 ```
 
-
-So, I tried ltracing the file like so:
+Using ltrace, I observed the following function calls:
 
 ```
 leviathan2@gibson:~$ ltrace ./printfile /etc/host.conf
@@ -66,7 +65,12 @@ multi on
 +++ exited (status 0) +++
 ```
 
-From the stack trace, `access` is most likely a check to see if you have permissions for the file, the `snprintf` stores chars in an array buffer, `getuid()` and set `reuid` likely mean it changes user permission and `system` calls cat.
+From this, the sequence seems to be:
+
+    - Check if the file is accessible (access).
+    - Store the command in a buffer (snprintf).
+    - Change the user ID (geteuid and setreuid).
+    - Execute the command (system).
 
 From this, we need to somehow bypass the access check so that we can execute the command with elevated permissions (likely leviathan3).
 
