@@ -1,11 +1,11 @@
-This level is much more complicated than the last challenge where you just need to input a simple sql query injection. When confronted with the challenge, an initial attempt with a query such as:
+This level is much more complicated than the last challenge where you just need to input a simple sql query injection. When confronted with a challenge, an initial attempt with a query such as:
 ```
 "yes" union select * from password; #test"
 ```
 didn't yield any results and instead flagged an error.
 
 
-From the source code, we can see that the application is checking for the existence of a user based on the inputted username. When a username is provided via the $_REQUEST array, there is a SQL query to check if the given username exists in the database. If a record is found, it simply returns that the user exists. 
+Based on the source code, we can see that the application is checking for the existence of a user based on the inputted username. When a username is provided via the $_REQUEST array, there is a SQL query to check if the given username exists in the database. If a record is found, it simply returns that the user exists. 
 We also can see that there is no easy way to immediately guess the password so, we need to change our strategy.
 
 #### The Blind SQL Injection Approach
@@ -19,10 +19,14 @@ The core of the Blind SQL injection in this case was the following template:
 ```
 where:
 - BINARY ensures case-sensitive matches.
-- %% are wildcards in SQL which matches 0 or more characters.
+- %% are wildcards in SQL which match 0 or more characters.
 
 #### Implementation Strategy
 
 The approach was to create a loop in which each character of the potential password is verified against the database using the Blind SQL Injection template above. 
 
-You can also refer to the source code provided for a demonstration.
+You can also refer to the source code provided for the demonstration.
+
+
+### Reflection:
+This type of SQL injection was not covered in the lectures or in the CTF challenges in our extension labs. I would not have known about the attack if it were not for reading on OWASP sql injection vulnerabilities. Hence, I realised ignorance is the main challenge for these CTF exercises. If I systematically do recon and find the vulnerabilities, I can exploit faster rather than reinventing the wheel. 
