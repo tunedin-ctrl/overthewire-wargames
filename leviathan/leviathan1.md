@@ -1,10 +1,10 @@
-For this question, I used ls -la to look at the non-hidden file `check` and found out that the check file is an executable with the owner as leviathan2 like so:
+For this question, I used ls -la to look at the non-hidden file `check` and found out that the `check` file is executable with the owner as leviathan2.
 
 ```
 -r-sr-x---  1 leviathan2 leviathan1 ... check
 ```
 
-So I execute the check file and find that it asks for a password which I have no clue. So, I used `objdump -T check` to go through the table and find it uses `strcmp` for comparing the password string against our `getchar(input)`. Also, `system` might mean it executes shell commands like so:
+To understand more of what the `check` file does, I execute it and find that it asks for a password which I do not have. So, I used `objdump -T check` to go through the symbol table. In doing so, I find that it uses `strcmp` for comparing the password string against our `getchar(input)`. Also, `system` might mean that it can help us execute shell commands and help us get the password.
 
 DYNAMIC SYMBOL TABLE:
 00000000      DF *UND*  00000000 (GLIBC_2.0)  strcmp
@@ -19,7 +19,7 @@ DYNAMIC SYMBOL TABLE:
 00000000      DF *UND*  00000000 (GLIBC_2.0)  setreuid
 0804a004 g    DO .rodata        00000004  Base        _IO_stdin_used
 
-Since we have a rough idea of the structure, I used `ltrace` to walk through the executable like so:
+Now equipped with some knowledge of the eexecutable, I used `ltrace` to walk through the executable like so:
 
 ```
 __libc_start_main(0x80491e6, 1, 0xffffd6a4, 0 <unfinished ...>
@@ -34,4 +34,7 @@ puts("Wrong password, Good Bye ..."Wrong password, Good Bye ...
 +++ exited (status 0) +++
 ```
 
-In the above code, the strcmp is comparing against the string `sex` which is likely the password. So, I execute `./check` again with the string `sex` and it got me into a shell terminal which then I just use `cat /etc/leviathan_pass/leviathan2` which works since the owner of the executable is leviathan2. Pretty much these steps got me the password.
+In the above code, the `strcmp` is comparing against the string `sex` which is likely the password. So, I execute `./check` again with the string `sex` and it got me inside a shell terminal and got me the password after using `cat /etc/leviathan_pass/leviathan2`. 
+The reason why this works is that the owner of the executable is leviathan2 as shown when executing `ls -la` intially. 
+
+Pretty much all these steps got me to the password. In this challenge, it taught me how to use `ltrace` which helps intercept dynamic library calls and signals by the executable process.
