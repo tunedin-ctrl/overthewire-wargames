@@ -1,7 +1,5 @@
 For this level, we need to do a buffer overflow attack to allow an injection shell command to get the password. To facilitate that, let's first look at the source code provided:
 ```
-/*
-   ...
 #include <stdio.h>
 #include <stdlib.h>
 
