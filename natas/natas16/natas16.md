@@ -21,8 +21,8 @@ By iterating through all the chars, you can get the password. You can also refer
 
 
 ### Protecting against command injections
-Like normal SQL injections, these attacks only threaten us if we do not know of them or take proactive steps to defend ourselves against them.
 Like what Sun Tzu said, any attack tactic that is repeated twice on the battlefield, does not have the same effect as the first time.
+Like normal SQL injections, these attacks only threaten us if we do not know of them or take proactive steps to defend ourselves against them.
 
 Similarly, there is also a way to protect ourselves from command injections: 
 1. Always sanitise and validate inputs to make sure they are not trying to inject anything into your system. For example:
