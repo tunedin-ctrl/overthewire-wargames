@@ -100,6 +100,6 @@ system("/bin/cat /tmp/tmp.0wDX4pzYkj/a l".../bin/cat: /tmp/tmp.0wDX4pzYkj/a: No 
 ### Reflection:
 You can use a filename as a payload with the file you want to bypass certain functions. Using filenames as payloads can be a strong method to exploit poorly written programs. 
 So, to mitigate payload attacks using files, we need to sanitize and validate inputs.
-This can be seen in the `ltrace`: 
+
 
 
